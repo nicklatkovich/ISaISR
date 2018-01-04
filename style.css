@@ -1,4 +1,50 @@
 
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #e3e3e3;
+}
+
 body {
     background-color: #1e1e1e;
+}
+
+h1 {
+    text-align: center;
+    background: #7317b1;
+    padding: 8px;
+    color: #ffff23;
+}
+
+div.data {
+    padding: 16px;
+}
+
+div#errorBox {
+    position: fixed;
+    padding: 0px;
+    bottom: 16px;
+    right: 16px;
+    width: 256px;
+    height: max-content;
+    text-align: center;
+    background: rgb(128, 9, 3);
+}
+
+div#errorBox:hover {
+    background-color: rgba(128, 9, 3, 0.2);
+    color: rgba(227, 227, 227, 0.2);
+}
+
+div.monotable {
+    font-family: Courier New, Courier, monospace;
+    font-size: 16px;
+    letter-spacing: 8px;
+}
+
+div.answer {
+    color: #ff4040;
+    font-size: 32px;
 }

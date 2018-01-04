@@ -1,14 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>ISaISR by NickLatkovich</title>
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
-    <script src="main_window.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
 </head>
+
 <body>
+    <div>
+        <h1>Modified Hamming code</h1>
+        <div class="data">
+            Source message:
+            <input type="text" id="mhc_source">
+            <button onclick="mhc_start()">Go!</button>
+            <p>
+                k =
+                <span id="mhc_k"></span>
+            </p>
+            <p>
+                r =
+                <span id="mhc_r"></span>
+            </p>
+            <p>
+                n =
+                <span id="mhc_n"></span>
+            </p>
+        </div>
+    </div>
+    <div>
+        <h1>Affine Caesar cipher</h1>
+        <div class="data">
+            <p>
+                a =
+                <input type="text" id="acc_a">
+            </p>
+            <p>
+                b =
+                <input type="text" id="acc_b">
+            </p>
+            <p>
+                Source message:
+                <input type="text" id="acc_source">
+            </p>
+            <button onclick="acc_start()">Go!</button>
+            <div class="monotable" id="acc_source_alph"></div>
+            <div class="monotable" id="acc_new_alph"></div>
+            <div class="answer" id="acc_answer">Answer:</div>
+            <div>
+                Inverse transformation:
+                <span id="acc_inverse"></span>
+            </div>
+        </div>
+    </div>
+    <div id="errorBox"></div>
 </body>
-<script type='text/javascript'>
-    onLoad( )
+
+<script>
+    onLoad();
 </script>
+
 </html>
