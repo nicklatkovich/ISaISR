@@ -104,26 +104,66 @@
         </div>
     </div>
     <div>
+        <h1>Diffie-Hellman Protocol</h1>
+        <div class="data">
+            <p>
+                g =
+                <input type="text" id="dhp_g">
+            </p>
+            <p>
+                p =
+                <input type="text" id="dhp_p">
+            </p>
+            <p>
+                a =
+                <input type="text" id="dhp_a">
+            </p>
+            <p>
+                b =
+                <input type="text" id="dhp_b">
+            </p>
+            <button onclick="dhp_start()">Go!</button>
+            <p>
+                A =
+                <span id="dhp_A"></span>
+            </p>
+            <p>
+                B =
+                <span id="dhp_B"></span>
+            </p>
+            <div class="answer">
+                k1 =
+                <span id="dhp_k1"></span>
+            </div>
+            <div class="answer">
+                k2 =
+                <span id="dhp_k2"></span>
+            </div>
+        </div>
+    </div>
+    <div>
         <h1>DES</h1>
-        <button onclick="des_gen()">Generate</button>
-        <p>
-            key =
-            <input type="text" id="des_key">
-        </p>
-        <p>
-            vector =
-            <input type="text" id="des_vector">
-        </p>
-        <p>
-            Message:
-        </p>
-        <textarea id="des_source"></textarea>
-        <p>
-            <button onclick="des_start()">Encrypt</button>
-            <button onclick="des_decrypt()">Decrypt</button>
-            <button onclick="des_swap()">Swap</button>
-        </p>
-        <textarea id="des_result" class="answer" disabled></textarea>
+        <div class="data">
+            <button onclick="des_gen()">Generate</button>
+            <p>
+                key =
+                <input type="text" id="des_key">
+            </p>
+            <p>
+                vector =
+                <input type="text" id="des_vector">
+            </p>
+            <p>
+                Message:
+            </p>
+            <textarea id="des_source"></textarea>
+            <p>
+                <button onclick="des_start()">Encrypt</button>
+                <button onclick="des_decrypt()">Decrypt</button>
+                <button onclick="des_swap()">Swap</button>
+            </p>
+            <textarea id="des_result" class="answer" disabled></textarea>
+        </div>
     </div>
     <div id="errorBox"></div>
 </body>

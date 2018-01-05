@@ -25,6 +25,14 @@ function onLoad() {
     rsa_phi_n = document.getElementById('rsa_phi_n');
     rsa_c = document.getElementById('rsa_c');
     rsa_source_m = document.getElementById('rsa_source_m');
+    dhp_g = document.getElementById('dhp_g');
+    dhp_p = document.getElementById('dhp_p');
+    dhp_a = document.getElementById('dhp_a');
+    dhp_b = document.getElementById('dhp_b');
+    dhp_A = document.getElementById('dhp_A');
+    dhp_B = document.getElementById('dhp_B');
+    dhp_k1 = document.getElementById('dhp_k1');
+    dhp_k2 = document.getElementById('dhp_k2');
     des_key = document.getElementById('des_key');
     des_vector = document.getElementById('des_vector');
     des_source = document.getElementById('des_source');
@@ -157,6 +165,26 @@ function rsa(full = true) {
     let c = pow_by_mod(m, e, n);
     rsa_c.innerText = c;
     rsa_source_m.innerText = pow_by_mod(c, d, n);
+}
+
+function dhp_start() {
+    check(dhp_g.value.match(/^[0-9]+$/), '"g" must be a number');
+    let g = parseInt(dhp_g.value);
+    check(dhp_p.value.match(/^[0-9]+$/), '"p" must be a number');
+    let p = parseInt(dhp_p.value);
+    check(dhp_a.value.match(/^[0-9]+$/), '"a" must be a number');
+    let a = parseInt(dhp_a.value);
+    check(dhp_b.value.match(/^[0-9]+$/), '"b" must be a number');
+    let b = parseInt(dhp_b.value);
+    let A = pow_by_mod(g, a, p);
+    let B = pow_by_mod(g, b, p);
+    dhp_A.innerText = A;
+    dhp_B.innerText = B;
+    let k1 = pow_by_mod(B, a, p);
+    let k2 = pow_by_mod(A, b, p);
+    dhp_k1.innerText = k1;
+    dhp_k2.innerText = k2;
+    check(k1 == k2, 'Hmm ... Something went wrong. The keys do not match');
 }
 
 function des_gen() {
