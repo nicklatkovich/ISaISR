@@ -49,3 +49,19 @@ div.answer {
     color: #ff4040;
     font-size: 32px;
 }
+
+textarea {
+    width: 512px;
+    height: 256px;
+    font-size: 24px;
+    font-family: Courier New, Courier, monospace;
+}
+
+textarea.answer {
+    background: #3c3c3c;
+    color: #ff4040;
+}
+
+textarea#des_source {
+    height: 128px;
+}

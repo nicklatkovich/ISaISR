@@ -5,6 +5,12 @@
     <title>ISaISR by NickLatkovich</title>
     <meta charset="utf-8">
     <link href="style.css" rel="stylesheet">
+    <script src="des/aes.js" type="text/javascript"></script>
+    <script src="des/aesprng.js" type="text/javascript"></script>
+    <script src="des/md5.js" type="text/javascript"></script>
+    <script src="des/entropy.js" type="text/javascript"></script>
+    <script src="des/jscrypt.js" type="text/javascript"></script>
+    <script src="des/des.js" type="text/javascript"></script>
     <script src="index.js" type="text/javascript"></script>
 </head>
 
@@ -96,6 +102,28 @@
                 <span id="rsa_source_m"></span>
             </p>
         </div>
+    </div>
+    <div>
+        <h1>DES</h1>
+        <button onclick="des_gen()">Generate</button>
+        <p>
+            key =
+            <input type="text" id="des_key">
+        </p>
+        <p>
+            vector =
+            <input type="text" id="des_vector">
+        </p>
+        <p>
+            Message:
+        </p>
+        <textarea id="des_source"></textarea>
+        <p>
+            <button onclick="des_start()">Encrypt</button>
+            <button onclick="des_decrypt()">Decrypt</button>
+            <button onclick="des_swap()">Swap</button>
+        </p>
+        <textarea id="des_result" class="answer" disabled></textarea>
     </div>
     <div id="errorBox"></div>
 </body>

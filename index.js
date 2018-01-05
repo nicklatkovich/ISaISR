@@ -25,6 +25,10 @@ function onLoad() {
     rsa_phi_n = document.getElementById('rsa_phi_n');
     rsa_c = document.getElementById('rsa_c');
     rsa_source_m = document.getElementById('rsa_source_m');
+    des_key = document.getElementById('des_key');
+    des_vector = document.getElementById('des_vector');
+    des_source = document.getElementById('des_source');
+    des_result = document.getElementById('des_result');
 }
 
 function onStartInterval() {
@@ -153,4 +157,23 @@ function rsa(full = true) {
     let c = pow_by_mod(m, e, n);
     rsa_c.innerText = c;
     rsa_source_m.innerText = pow_by_mod(c, d, n);
+}
+
+function des_gen() {
+    let key = genkey();
+    des_key.value = key.key;
+    des_vector.value = key.vector;
+}
+
+function des_start() {
+    des_result.value = encrypt_string(des_source.value, des_key.value, des_vector.value);
+}
+
+function des_swap() {
+    des_source.value = des_result.value;
+    des_result.value = '';
+}
+
+function des_decrypt() {
+    des_result.value = decrypt_string(des_source.value, des_key.value, des_vector.value);
 }
