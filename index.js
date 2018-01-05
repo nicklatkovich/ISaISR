@@ -5,13 +5,6 @@ ipcRenderer.on('onResize', onResize);
 let interval = undefined;
 let lastOnStepTime = undefined;
 
-let errorStream;
-let acc_m;
-let acc_source_alph;
-let acc_new_alph;
-let acc_answer;
-let acc_inverse;
-
 function onLoad() {
     onResize();
     // onStartInterval();
@@ -26,6 +19,12 @@ function onLoad() {
     acc_answer = document.getElementById('acc_answer');
     acc_m = acc_source_alph.innerText.length;
     acc_inverse = document.getElementById('acc_inverse');
+    rsa_p = document.getElementById('rsa_p');
+    rsa_q = document.getElementById('rsa_q');
+    rsa_n = document.getElementById('rsa_n');
+    rsa_phi_n = document.getElementById('rsa_phi_n');
+    rsa_c = document.getElementById('rsa_c');
+    rsa_source_m = document.getElementById('rsa_source_m');
 }
 
 function onStartInterval() {
@@ -55,6 +54,14 @@ function onStep() {
 function gcd(a, b) {
     if (b == 0) return Math.abs(a);
     return gcd(b, a % b);
+}
+
+function pow_by_mod(a, b, mod) {
+    let res = 1;
+    for (let i = 0; i < b; i++) {
+        res = (res * a) % mod;
+    }
+    return res;
 }
 
 function check(request, error) {
@@ -114,4 +121,36 @@ function acc_start() {
         inverse += x;
     }
     acc_inverse.innerText = inverse;
+}
+
+function rsa(full = true) {
+    rsa_d.innerText = '';
+    check(rsa_p.value.match(/^[0-9]+$/), '"p" must be a number');
+    let p = parseInt(rsa_p.value);
+    check(rsa_q.value.match(/^[0-9]+$/), '"q" must be a number');
+    let q = parseInt(rsa_q.value);
+    // TODO: p and q must be prime
+    let n = p * q;
+    rsa_n.innerText = n;
+    let phi_n = (p - 1) * (q - 1);
+    rsa_phi_n.innerText = phi_n;
+    if (!full) return;
+    check(rsa_e.value.match(/^[0-9]+$/), '"e" must be a number');
+    let e = parseInt(rsa_e.value);
+    check(rsa_m.value.match(/^[0-9]+$/), '"m" must be a number');
+    let m = parseInt(rsa_m.value);
+    check(m < n, '"m" must be less than "n"');
+    let d = 0;
+    let temp = 0;
+    while (temp != 1) {
+        d++;
+        temp += e;
+        while (temp > phi_n) {
+            temp -= phi_n;
+        }
+    }
+    rsa_d.innerText = d;
+    let c = pow_by_mod(m, e, n);
+    rsa_c.innerText = c;
+    rsa_source_m.innerText = pow_by_mod(c, d, n);
 }

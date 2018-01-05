@@ -54,6 +54,49 @@
             </div>
         </div>
     </div>
+    <div>
+        <h1>RSA</h1>
+        <div class="data">
+            <p>
+                p =
+                <input type="text" id="rsa_p">
+            </p>
+            <p>
+                q =
+                <input type="text" id="rsa_q">
+            </p>
+            <button onclick="rsa(false)">Go!</button>
+            <p>
+                n =
+                <span id="rsa_n"></span>
+            </p>
+            <p>
+                ф(n) =
+                <span id="rsa_phi_n"></span>
+            </p>
+            <p>
+                e =
+                <input type="text" id="rsa_e">
+            </p>
+            <p>
+                m =
+                <input type="text" id="rsa_m">
+            </p>
+            <button onclick="rsa()">Go!</button>
+            <p>
+                d =
+                <span id="rsa_d"></span>
+            </p>
+            <p>
+                c =
+                <span id="rsa_c"></span>
+            </p>
+            <p>
+                source m =
+                <span id="rsa_source_m"></span>
+            </p>
+        </div>
+    </div>
     <div id="errorBox"></div>
 </body>
 
