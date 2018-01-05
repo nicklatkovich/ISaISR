@@ -33,6 +33,15 @@ function onLoad() {
     dhp_B = document.getElementById('dhp_B');
     dhp_k1 = document.getElementById('dhp_k1');
     dhp_k2 = document.getElementById('dhp_k2');
+    egs_p = document.getElementById('egs_p');
+    egs_g = document.getElementById('egs_g');
+    egs_x = document.getElementById('egs_x');
+    egs_M = document.getElementById('egs_M');
+    egs_y = document.getElementById('egs_y');
+    egs_k = document.getElementById('egs_k');
+    egs_a = document.getElementById('egs_a');
+    egs_b = document.getElementById('egs_b');
+    egs_reverse = document.getElementById('egs_reverse');
     des_key = document.getElementById('des_key');
     des_vector = document.getElementById('des_vector');
     des_source = document.getElementById('des_source');
@@ -185,6 +194,29 @@ function dhp_start() {
     dhp_k1.innerText = k1;
     dhp_k2.innerText = k2;
     check(k1 == k2, 'Hmm ... Something went wrong. The keys do not match');
+}
+
+function egs_start() {
+    check(egs_p.value.match(/^[0-9]+$/), '"p" must be a number');
+    let p = parseInt(egs_p.value);
+    check(egs_g.value.match(/^[0-9]+$/), '"g" must be a number');
+    let g = parseInt(egs_g.value);
+    check(egs_x.value.match(/^[0-9]+$/), '"x" must be a number');
+    let x = parseInt(egs_x.value);
+    check(egs_M.value.match(/^[0-9]+$/), '"M" must be a number');
+    let M = parseInt(egs_M.value);
+    check(M < p, '"M must be less then "p"');
+    let y = pow_by_mod(g, x, p);
+    egs_y.innerText = y;
+    let k = Math.floor(Math.random() * (p - 1 - 2) + 2);
+    egs_k.innerText = k;
+    let a = pow_by_mod(g, k, p);
+    egs_a.innerText = a;
+    let b = pow_by_mod(y, k, p) * M % p;
+    egs_b.innerText = b;
+    let reverse = pow_by_mod(a, p - 1 - x, p) * b % p;
+    egs_reverse.innerText = reverse;
+    check(reverse == M, 'Error! Only simple numbers should be used as keys');
 }
 
 function des_gen() {
