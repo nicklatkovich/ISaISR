@@ -65,3 +65,11 @@ textarea.answer {
 textarea#des_source {
     height: 128px;
 }
+
+input[type="text"] {
+    text-align: center;
+}
+
+input#des_key {
+    width: 512px;
+}
